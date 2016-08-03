@@ -35,6 +35,15 @@ $ fbi atm webpack-demo
 ```
 
 ### Install dependencies globally
+
+you can change the config of npm in ./fbi/config.js => npm
+
+example:
+
+for Chinese users, Uncomment this line:
+
+`options: '--save-dev --registry=https://registry.npm.taobao.org'`
+
 ```bash
 $ fbi i
 ```

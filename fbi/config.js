@@ -7,8 +7,8 @@ module.exports = {
   },
   npm: {
     alias: 'npm',
-    // options: '--save-dev'
-    options: '--save-dev --registry=https://registry.npm.taobao.org'
+    options: '--save-dev'
+    // options: '--save-dev --registry=https://registry.npm.taobao.org'
   },
   alias: {
     b: 'build',
