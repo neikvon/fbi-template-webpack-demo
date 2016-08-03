@@ -6,7 +6,7 @@ Webpack Demo template for fbi
 $ git clone git@github.com:neikvon/fbi-template-webpack-demo.git
 ```
 
-### install dependencies
+### Install dependencies locally
 ```bash
 $ npm install
 ```
@@ -32,6 +32,11 @@ you can add other tasks
 ### Add to fbi template
 ```bash
 $ fbi atm webpack-demo
+```
+
+### Install dependencies globally
+```bash
+$ fbi i
 ```
 
 ### Check
