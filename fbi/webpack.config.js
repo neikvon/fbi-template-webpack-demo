@@ -1,8 +1,10 @@
 module.exports = (requireReslove, ctx) => {
+  const path = requireReslove('path')
   const webpack = requireReslove('webpack')
   const ExtractTextPlugin = requireReslove('extract-text-webpack-plugin')
   const HtmlWebpackPlugin = requireReslove('html-webpack-plugin')
   const nodeModulesPath = ctx.options.node_modules_path
+  // const nodeModulesPath = ctx._.cwd('node_modules') // for local test
   const isProduction = ctx.taskParams && ctx.taskParams[0] === 'p' // fbi build -p
   const autoprefixerBrowsers = [
     'last 2 versions',
@@ -38,10 +40,12 @@ module.exports = (requireReslove, ctx) => {
         {
           test: /\.js$/,
           loader: 'babel',
+          exclude: /node_modules/,
           query: {
             presets: [
-              nodeModulesPath + '/babel-preset-es2015'
-            ]
+              'babel-preset-es2015'
+            ].map(item => path.join(nodeModulesPath, item)),
+            cacheDirectory: true
           }
         },
         {
@@ -51,34 +55,17 @@ module.exports = (requireReslove, ctx) => {
         {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract({
-            fallbackLoader: 'style?name=css/' + (isProduction ? '[hash:8].[ext]' : '[name].[ext]?[hash:8]'),
+            fallbackLoader: 'style',
             loader: 'css!postcss'
           })
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/i,
           loaders: [
-            'file?name=img/' + (isProduction ? '[hash:8].[ext]' : '[name].[ext]?[hash:8]'),
-            'image-webpack'
+            'url?limit=10000&name=img/' + (isProduction ? '[name]-[hash:8].[ext]' : '[name].[ext]?[hash:8]')
           ]
         }
       ]
-    },
-    imageWebpackLoader: {
-      pngquant: {
-        quality: '65-90',
-        speed: 4
-      },
-      svgo: {
-        plugins: [
-          {
-            removeViewBox: false
-          },
-          {
-            removeEmptyAttrs: false
-          }
-        ]
-      }
     },
     plugins: [
       new ExtractTextPlugin({
