@@ -1,9 +1,27 @@
 {
   "name": "webpack-demo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Webpack demo template for fbi",
   "author": "fbi",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neikvon/fbi-template-webpack-demo.git"
+  },
+  "keywords": [
+    "fbi",
+    "koa",
+    "webpack",
+    "postcss",
+    "es6",
+    "es7",
+    "es2015",
+    "es2016",
+    "template",
+    "scafford",
+    "web",
+    "node"
+  ],
   "devDependencies": {
     "autoprefixer": "^6.3.7",
     "babel-loader": "^6.2.4",
