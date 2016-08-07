@@ -1,5 +1,6 @@
 module.exports = {
   template: 'webpack-demo',
+  templateDescription: 'Simple, es2015 + webpack + postcss.',
   server: {
     root: 'dst/',
     host: 'localhost',
