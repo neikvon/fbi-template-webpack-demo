@@ -74,9 +74,9 @@ Note:
 - `-t` means template tasks;
 - `-g` means global tasks;
 
-You can specify a template task like `fbi [task] -t`
+You can specify a template task use `fbi [task] -t`
 
-By the way, you can check the task content like `fbi cat [task] -t`
+By the way, you can check the task content use `fbi cat [task] -t`
 
 More help: `fbi -h`
 
