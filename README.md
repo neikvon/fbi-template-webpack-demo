@@ -1,6 +1,18 @@
 # fbi-template-webpack-demo
-Webpack Demo template for fbi
+Webpack Demo template for [fbi-v2.x](https://github.com/neikvon/fbi)
 
+## Introduction:
+
+Simple scafford for web application
+
+Features: es2015/2016(babel), webpack 2, postcss, static server(koa 2).
+
+## Usage:
+
+### First
+```bash
+$ npm i -g fbi
+```
 ### Clone
 ```bash
 $ git clone git@github.com:neikvon/fbi-template-webpack-demo.git
@@ -27,25 +39,12 @@ $ fbi s
 ```bash
 $ fbi c
 ```
-you can add other tasks
+You can add more tasks.
 
-### Add to fbi template
+### Add to fbi templates
 ```bash
-$ fbi atm webpack-demo
-```
-
-### Install dependencies globally
-
-you can change the config of npm in ./fbi/config.js => npm
-
-example:
-
-for Chinese users, Uncomment this line:
-
-`options: '--save-dev --registry=https://registry.npm.taobao.org'`
-
-```bash
-$ fbi i
+$ cd path/to/fbi-template-webpack-demo
+$ fbi atm
 ```
 
 ### Check
@@ -57,19 +56,29 @@ $ fbi ls
 
 # Tasks:
 
-#  b, build        <template>
-#  c, clean        <template>
-#  s, serve        <template>
-#  w, watch        <template>
-#  b, build        <local>
-#  c, clean        <local>
-#  s, serve        <local>
-#  w, watch        <local>
+#  b, build        -t
+#  c, clean        -t
+#  s, serve        -t
+#  w, watch        -t
+#  b, build
+#  c, clean
+#  s, serve
+#  w, watch
 
 # Templates:
 
-#  webpack-demo
+#  ★  webpack-demo <current> - Simple, es2015 + webpack + postcss.
 ```
+Note:
+- `empty` means local tasks.
+- `-t` means template tasks;
+- `-g` means global tasks;
+
+You can specify a template task use `fbi [task] -t`
+
+By the way, you can check the task content use `fbi cat [task] -t`
+
+More help: `fbi -h`
 
 ## Reuse
 ```bash

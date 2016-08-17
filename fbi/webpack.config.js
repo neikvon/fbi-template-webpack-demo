@@ -1,8 +1,12 @@
-module.exports = (requireReslove, ctx) => {
-  const webpack = requireReslove('webpack')
-  const ExtractTextPlugin = requireReslove('extract-text-webpack-plugin')
-  const HtmlWebpackPlugin = requireReslove('html-webpack-plugin')
+module.exports = (require, ctx) => {
+
+  const path = require('path')
+  const webpack = require('webpack')
+  const ExtractTextPlugin = require('extract-text-webpack-plugin')
+  const HtmlWebpackPlugin = require('html-webpack-plugin')
+  const CopyWebpackPlugin = require('copy-webpack-plugin')
   const nodeModulesPath = ctx.options.node_modules_path
+  // const nodeModulesPath = ctx._.cwd('node_modules') // for local test
   const isProduction = ctx.taskParams && ctx.taskParams[0] === 'p' // fbi build -p
   const autoprefixerBrowsers = [
     'last 2 versions',
@@ -38,10 +42,12 @@ module.exports = (requireReslove, ctx) => {
         {
           test: /\.js$/,
           loader: 'babel',
+          exclude: /node_modules/,
           query: {
             presets: [
-              nodeModulesPath + '/babel-preset-es2015'
-            ]
+              'babel-preset-es2015'
+            ].map(item => path.join(nodeModulesPath, item)),
+            cacheDirectory: true
           }
         },
         {
@@ -51,34 +57,17 @@ module.exports = (requireReslove, ctx) => {
         {
           test: /\.css$/,
           loader: ExtractTextPlugin.extract({
-            fallbackLoader: 'style?name=css/' + (isProduction ? '[hash:8].[ext]' : '[name].[ext]?[hash:8]'),
+            fallbackLoader: 'style',
             loader: 'css!postcss'
           })
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/i,
           loaders: [
-            'file?name=img/' + (isProduction ? '[hash:8].[ext]' : '[name].[ext]?[hash:8]'),
-            'image-webpack'
+            'url?limit=10000&name=img/' + (isProduction ? '[name]-[hash:8].[ext]' : '[name].[ext]?[hash:8]')
           ]
         }
       ]
-    },
-    imageWebpackLoader: {
-      pngquant: {
-        quality: '65-90',
-        speed: 4
-      },
-      svgo: {
-        plugins: [
-          {
-            removeViewBox: false
-          },
-          {
-            removeEmptyAttrs: false
-          }
-        ]
-      }
     },
     plugins: [
       new ExtractTextPlugin({
@@ -95,6 +84,9 @@ module.exports = (requireReslove, ctx) => {
         favicon: './src/favicon.ico',
         template: './src/index.html'
       }),
+      new CopyWebpackPlugin([
+        { from: 'src/lib', to: 'lib' }
+      ]),
       isProduction ? new webpack.optimize.UglifyJsPlugin({ // js ugllify
         compress: {
           warnings: false
@@ -102,11 +94,12 @@ module.exports = (requireReslove, ctx) => {
       }) : noop
     ],
     postcss: [
-      requireReslove('autoprefixer')({
+      require('autoprefixer')({
         browsers: autoprefixerBrowsers
       }),
-      requireReslove('precss'),
-      isProduction ? requireReslove('cssnano') : noop // css minify
+      require('precss'),
+      isProduction ? require('cssnano') : noop // css minify
     ]
   }
+
 }
