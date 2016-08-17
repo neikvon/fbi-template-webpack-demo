@@ -1,6 +1,6 @@
 {
   "name": "webpack2",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Project template with Webpack 2, Koa 2, Postcss and Babel 6",
   "author": "fbi",
   "license": "ISC",
