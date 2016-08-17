@@ -1,4 +1,4 @@
-# fbi-template-webpack-demo
+# fbi-template-webpack2
 Webpack Demo template for [fbi-v2.x](https://github.com/neikvon/fbi)
 
 ## Introduction:
@@ -15,7 +15,7 @@ $ npm i -g fbi
 ```
 ### Clone
 ```bash
-$ git clone git@github.com:neikvon/fbi-template-webpack-demo.git
+$ git clone git@github.com:neikvon/fbi-template-webpack2.git
 ```
 
 ### Install dependencies locally
@@ -43,7 +43,7 @@ You can add more tasks.
 
 ### Add to fbi templates
 ```bash
-$ cd path/to/fbi-template-webpack-demo
+$ cd path/to/fbi-template-webpack2
 $ fbi atm
 ```
 
@@ -67,7 +67,7 @@ $ fbi ls
 
 # Templates:
 
-#  ★  webpack-demo <current> - Simple, es2015 + webpack + postcss.
+#  ★  webpack2 <current> - Simple, es2015 + webpack + postcss.
 ```
 Note:
 - `empty` means local tasks.
@@ -83,6 +83,6 @@ More help: `fbi -h`
 ## Reuse
 ```bash
 $ cd path/to/other/folder
-$ fbi init webpack-demo
+$ fbi init webpack2
 ```
 you can use all the template tasks now.

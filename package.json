@@ -1,12 +1,12 @@
 {
-  "name": "webpack-demo",
-  "version": "1.0.3",
-  "description": "Webpack demo template for fbi",
+  "name": "webpack2",
+  "version": "1.0.4",
+  "description": "Project template with Webpack 2, Koa 2, Postcss and Babel 6",
   "author": "fbi",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neikvon/fbi-template-webpack-demo.git"
+    "url": "git+https://github.com/neikvon/fbi-template-webpack2.git"
   },
   "keywords": [
     "fbi",
